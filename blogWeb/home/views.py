@@ -10,3 +10,6 @@ def login(request):
 
 def signup(request):
     return render(request, 'signup.html')
+
+def add_Blog(request):
+    return render(request, 'addBlog.html')
