@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import SlugField
+from numpy import true_divide
 from .misc import *
 
 # Create your models here.
@@ -8,6 +9,7 @@ from .misc import *
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
+    user = models.ForeignKey(User, blank=True, null= True, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=20, null=True, blank=True)
     image = models.ImageField(upload_to = 'blog')
     created_at = models.DateTimeField(auto_now_add=True)

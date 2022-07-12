@@ -1,4 +1,23 @@
 {% extends 'main.html' %}
 {% block content %}
-    
+    <div class="container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="">Enter title</label>
+                    <input type="text" class="form-control" placeholder="Enter Title" name="title" id="">
+                </div>
+
+                <div class="div col-md-12">
+                    {{form.media}}
+                    {{form.as_p}}
+                </div>
+                <div class="div col-md-12">
+                    <input type="file" name="image" id="">
+                </div>
+            </div>
+            <button type="submit">Add Blog</button>
+        </form>
+    </div>
 {% endblock %}
