@@ -1,7 +1,10 @@
+# from curses.ascii import US
+# from pyexpat import model
+# from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
-from django.forms import SlugField
-from numpy import true_divide
+# from django.forms import SlugField
+# from numpy import true_divide
 from .misc import *
 
 # Create your models here.
@@ -21,4 +24,6 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         self.slug = generate_Slug(self.title)
         super(Blog,self).save(*args, **kwargs)
+
+
 

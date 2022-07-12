@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% block content %}
+
+    <div class="div container">
+        {% for blog in blog_ob %}
+            <div class="row">
+                <div class="col-3">
+
+                </div>
+                <div class="col-4">
+                    {{forloop.counter}}
+                    <a href="{% url 'blogdetail' blog.slug %}">
+                    <h5>{{blog.title}}</h5></a>
+                    <h6>{{blog.created_at}}</h6>
+                </div>
+
+                <div class="col-4">
+                    <a href="{% url 'updateblog' blog.slug %}"><button>Edit</button></a>
+                    <a href="{% url 'blogdelete' blog.id %}"><button>delete</button></a>
+                    
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

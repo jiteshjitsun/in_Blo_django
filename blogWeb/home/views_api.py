@@ -4,6 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from .models import *
+from .misc import *
 
 class LoginView(APIView):
     def post(self, request):
@@ -26,6 +28,8 @@ class LoginView(APIView):
             if check_user is None:
                 response['message'] = 'invalid use1r'
                 raise Exception('invalid, user not found')
+
+            
 
             user_obj = authenticate(username = data.get('username'), password = data.get('password'))
 
@@ -72,6 +76,9 @@ class RegisterView(APIView):
             user_obj = User.objects.create(username = data.get('username'))
             user_obj.set_password(data.get('password'))
             user_obj.save() 
+
+            UserProfile.objects.create(user = user_obj, token = generate_random_string(50) )
+
             response['status'] = 200
             response['message'] = "user created"
             

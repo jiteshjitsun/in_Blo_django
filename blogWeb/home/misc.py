@@ -14,3 +14,4 @@ def generate_Slug(text):
     if Blog.objects.filter(slug=new_slug).first():
         new_slug = generate_Slug(text + generate_random_string(5))
     return new_slug
+
